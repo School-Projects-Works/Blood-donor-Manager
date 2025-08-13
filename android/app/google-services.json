@@ -12,12 +12,7 @@
           "package_name": "com.example.blood_bridge"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "376787726082-bjb09sqqqrvic2peqlkhcc0kjd3juhc3.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
           "current_key": "AIzaSyBorsu0Y1DE01bIkgECjmCZVxjAnpj-Ozk"
@@ -25,12 +20,26 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "376787726082-bjb09sqqqrvic2peqlkhcc0kjd3juhc3.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:376787726082:android:18643972e3dc9671d55c1b",
+        "android_client_info": {
+          "package_name": "com.example.blood_donor_manger"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBorsu0Y1DE01bIkgECjmCZVxjAnpj-Ozk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
         }
       }
     }

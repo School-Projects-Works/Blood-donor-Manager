@@ -1,13 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 import 'package:auto_route/auto_route.dart';
-import 'package:blood_donor_admin/config/routes/routes.dart';
-import 'package:blood_donor_admin/core/components/widgets/smart_dialog.dart';
-import 'package:blood_donor_admin/services/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../core/components/constants/enums.dart';
+import '../../core/components/constants/enums.dart';
+import '../../core/components/widgets/smart_dialog.dart';
+import '../config/routes/routes.dart';
+import '../services/firebase_auth.dart';
+
 
 final authStateProvider = StateNotifierProvider<AuthState, AuthData>((ref) {
   return AuthState();
@@ -38,6 +40,17 @@ class AuthState extends StateNotifier<AuthData> {
         AutoRouter.of(context).replace(const HomeRoute());
       }
     }
+  }
+
+  //logout
+  void logout(BuildContext context) async {
+    CustomDialog.showLoading(message: 'Logging out...');
+    await FirebaseAuthService.signOut();
+    if (mounted) {
+      AutoRouter.of(context).replace(const LoginRoute());
+    }
+    CustomDialog.dismiss();
+    CustomDialog.showToast(message: 'Logout Successful', type: ToastType.success);
   }
 }
 

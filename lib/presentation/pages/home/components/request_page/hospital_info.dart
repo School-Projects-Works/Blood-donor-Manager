@@ -2,7 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:place_picker/place_picker.dart';
+import 'package:place_picker_v2/place_picker.dart';
+import 'package:place_picker_v2/widgets/place_picker.dart';
 
 import '../../../../../core/components/widgets/custom_button.dart';
 import '../../../../../core/components/widgets/custom_input.dart';

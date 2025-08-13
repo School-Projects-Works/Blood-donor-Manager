@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:blood_donor_admin/pages/home/widgets/side_bar.dart';
-import 'package:blood_donor_admin/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../generated/assets.dart';
+
+import '../../../generated/assets.dart';
+import '../../../styles/colors.dart';
+import 'widgets/side_bar.dart';
+
 
 @RoutePage()
 class HomePage extends StatefulWidget {

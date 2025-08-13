@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../../styles/colors.dart';
 import '../constants/enums.dart';
 
@@ -38,7 +37,7 @@ class CustomDialog {
     SmartDialog.showToast(
       message,
       alignment:
-          AlignmentGeometry.lerp(Alignment.center, Alignment.bottomCenter, 0.5),
+          Alignment.center,
       builder: (context) => Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(

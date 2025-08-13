@@ -1,15 +1,15 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:blood_donor_admin/core/components/constants/strings.dart';
-import 'package:blood_donor_admin/core/components/widgets/custom_button.dart';
-import 'package:blood_donor_admin/core/components/widgets/custom_input.dart';
-import 'package:blood_donor_admin/generated/assets.dart';
-import 'package:blood_donor_admin/styles/colors.dart';
-import 'package:blood_donor_admin/styles/styles.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../core/components/constants/strings.dart';
+import '../../../core/components/widgets/custom_button.dart';
+import '../../../core/components/widgets/custom_input.dart';
+import '../../../generated/assets.dart';
+import '../../../styles/colors.dart';
+import '../../../styles/styles.dart';
 import '../../config/routes/routes.dart';
 import '../../state/auth_state.dart';
 

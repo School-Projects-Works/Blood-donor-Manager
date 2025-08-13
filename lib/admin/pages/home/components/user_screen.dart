@@ -1,15 +1,15 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:blood_donor_admin/core/components/widgets/smart_dialog.dart';
-import 'package:blood_donor_admin/core/functions.dart';
-import 'package:blood_donor_admin/styles/colors.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import '../../../../core/components/widgets/smart_dialog.dart';
+import '../../../../core/functions.dart';
+import '../../../../styles/colors.dart';
+import '../../../../styles/styles.dart';
 import '../../../state/data_sate.dart';
-import '../../../styles/styles.dart';
 
 @RoutePage()
 class UsersScreen extends ConsumerStatefulWidget {
@@ -70,7 +70,7 @@ class _UsersScreenState extends ConsumerState<UsersScreen> {
                       ),
                     ),
                     DataColumn2(
-                       size: ColumnSize.S,
+                      size: ColumnSize.S,
                       label: Text(
                         'Gender',
                         style: normalText(
@@ -78,7 +78,7 @@ class _UsersScreenState extends ConsumerState<UsersScreen> {
                       ),
                     ),
                     DataColumn2(
-                       size: ColumnSize.S,
+                      size: ColumnSize.S,
                       label: Text(
                         'Date of\nBirh',
                         style: normalText(
@@ -106,7 +106,6 @@ class _UsersScreenState extends ConsumerState<UsersScreen> {
                         style: normalText(
                             fontSize: 15, fontWeight: FontWeight.bold),
                       ),
-                      
                     ),
                     DataColumn2(
                       label: Text(
@@ -134,9 +133,10 @@ class _UsersScreenState extends ConsumerState<UsersScreen> {
                   rows: data
                       .map((e) => DataRow(cells: [
                             DataCell(InkWell(
-                              onTap: (){
-                                CustomDialog.showImageDialog(path: e.profileUrl ??
-                                    'https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png');
+                              onTap: () {
+                                CustomDialog.showImageDialog(
+                                    path: e.profileUrl ??
+                                        'https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png');
                               },
                               child: CircleAvatar(
                                 radius: 20,
@@ -153,7 +153,7 @@ class _UsersScreenState extends ConsumerState<UsersScreen> {
                                 '${e.address ?? ''} - ${e.city ?? ''}, ${e.region ?? ''}')),
                             DataCell(Text(getDateFromDate(e.createdAt))),
                             DataCell(Text(
-                              e.status!,
+                              e.status ?? "",
                               style: TextStyle(
                                   color: e.status == 'Enabled'
                                       ? Colors.green
@@ -171,10 +171,8 @@ class _UsersScreenState extends ConsumerState<UsersScreen> {
                                               e.uid!);
                                     }),
                                 IconButton(
-                                    onPressed: () {
-                                      
-                                    },
-                                    icon:  Icon(
+                                    onPressed: () {},
+                                    icon: Icon(
                                       MdiIcons.eye,
                                       color: Colors.black,
                                     ))

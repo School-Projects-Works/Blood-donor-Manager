@@ -1,14 +1,13 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:blood_donor_admin/core/components/widgets/custom_input.dart';
-import 'package:blood_donor_admin/core/components/widgets/smart_dialog.dart';
-import 'package:blood_donor_admin/models/donation_model.dart';
-import 'package:blood_donor_admin/styles/colors.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../../core/functions.dart';
+import '../../../../Models/donation_model.dart';
+import '../../../../core/components/widgets/custom_input.dart';
+import '../../../../core/components/widgets/smart_dialog.dart';
+import '../../../../core/functions.dart';
+import '../../../../styles/colors.dart';
 import '../../../state/data_sate.dart';
 @RoutePage()
 class DonationScreen extends ConsumerStatefulWidget {

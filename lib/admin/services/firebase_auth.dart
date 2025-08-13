@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import '../core/components/widgets/smart_dialog.dart';
+
+import '../../core/components/widgets/smart_dialog.dart';
 
 class FirebaseAuthService {
   static final _firebaseAuth = FirebaseAuth.instance;

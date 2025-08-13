@@ -1,9 +1,10 @@
 // ignore_for_file: file_names
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../Models/user_model.dart';
-import '../models/donation_model.dart';
-import '../models/request_model.dart';
+import '../../Models/donation_model.dart';
+import '../../Models/user_model.dart';
+import '../../models/request_model.dart';
+
 
 class FireStoreServices {
   static final _fireStore = FirebaseFirestore.instance;

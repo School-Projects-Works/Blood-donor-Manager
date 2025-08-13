@@ -1,10 +1,11 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:blood_donor_admin/config/routes/routes.dart';
-import 'package:blood_donor_admin/core/components/constants/enums.dart';
-import 'package:blood_donor_admin/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import '../../../../core/components/constants/enums.dart';
+import '../../../../styles/colors.dart';
+import '../../../config/routes/routes.dart';
+import '../../../state/auth_state.dart';
 import '../../../state/navigation_state.dart';
 
 class SideBar extends ConsumerWidget {
@@ -40,10 +41,10 @@ class SideBar extends ConsumerWidget {
             const SizedBox(
               height: 40,
             ),
-             Expanded(
+            Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [ 
+                children: [
                   SideBarItem(
                     destination: DashboardRoute(),
                     title: 'Dashboard',
@@ -64,20 +65,64 @@ class SideBar extends ConsumerWidget {
                   ),
                   SideBarItem(
                     destination: UsersRoute(),
-                    title: 'Resgistered Users',
+                    title: 'Registered Users',
                     icon: Icons.person,
                     page: HomePages.users,
                   ),
                 ],
               ),
             ),
+            //logout
+           _logoutButton(ref,context)
           ]),
     );
+  }
+  
+  Widget _logoutButton(WidgetRef ref, BuildContext context) {
+    var size = ref.watch(sideBarWithProvider);
+    return InkWell(
+       onTap: () {
+          ref.read(authStateProvider.notifier).logout(context);
+        },
+        child: Container(
+          width: size,
+          height: 50,
+          color:
+                   Colors.transparent,
+          child: size < 100
+              ? Center(
+                  child: Icon(
+                    Icons.logout,
+                    color:
+                         Colors.white,
+                  ),
+                )
+              : Row(children: [
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Icon(
+                   Icons.logout,
+                    color:  Colors.white,
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    'Logout',
+                    style: TextStyle(
+                      color:  Colors.white,
+                    ),
+                  )
+                ]),
+        ));
+ 
   }
 }
 
 class SideBarItem extends ConsumerStatefulWidget {
-  const SideBarItem( {super.key, this.title, this.icon, this.destination,this.page});
+  const SideBarItem(
+      {super.key, this.title, this.icon, this.destination, this.page});
   final String? title;
   final IconData? icon;
   final PageRouteInfo<dynamic>? destination;
@@ -107,16 +152,16 @@ class _SideBarItemState extends ConsumerState<SideBarItem> {
           height: 50,
           color: isHovered
               ? Colors.white.withOpacity(0.5)
-              :ref.watch(navigationPageProvider) ==
-                      widget.page
+              : ref.watch(navigationPageProvider) == widget.page
                   ? Colors.white
                   : Colors.transparent,
           child: size < 100
               ? Center(
                   child: Icon(
                     widget.icon,
-                    color:ref.watch(navigationPageProvider) ==
-                      widget.page?primaryColor: Colors.white,
+                    color: ref.watch(navigationPageProvider) == widget.page
+                        ? primaryColor
+                        : Colors.white,
                   ),
                 )
               : Row(children: [
@@ -125,16 +170,20 @@ class _SideBarItemState extends ConsumerState<SideBarItem> {
                   ),
                   Icon(
                     widget.icon,
-                   color:ref.watch(navigationPageProvider) ==
-                      widget.page?primaryColor: Colors.white,
+                    color: ref.watch(navigationPageProvider) == widget.page
+                        ? primaryColor
+                        : Colors.white,
                   ),
                   const SizedBox(
                     width: 10,
                   ),
                   Text(
                     widget.title!,
-                    style:  TextStyle( color:ref.watch(navigationPageProvider) ==
-                      widget.page?primaryColor: Colors.white,),
+                    style: TextStyle(
+                      color: ref.watch(navigationPageProvider) == widget.page
+                          ? primaryColor
+                          : Colors.white,
+                    ),
                   )
                 ]),
         ));

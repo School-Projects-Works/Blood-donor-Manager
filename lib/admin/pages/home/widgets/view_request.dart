@@ -1,12 +1,11 @@
-import 'package:blood_donor_admin/models/request_model.dart';
-import 'package:blood_donor_admin/styles/colors.dart';
-import 'package:blood_donor_admin/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-
-import '../../../core/components/widgets/smart_dialog.dart';
+import '../../../../Models/request_model.dart';
+import '../../../../core/components/widgets/smart_dialog.dart';
+import '../../../../styles/colors.dart';
+import '../../../../styles/styles.dart';
 import '../../../state/data_sate.dart';
 
 class ViewRequest extends ConsumerWidget {
@@ -70,7 +69,8 @@ class ViewRequest extends ConsumerWidget {
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Column(mainAxisSize: MainAxisSize.min, children: [
+                    child:
+                        Column(mainAxisSize: MainAxisSize.min, children: [
                       Row(
                         children: [
                           Container(
@@ -78,12 +78,12 @@ class ViewRequest extends ConsumerWidget {
                             height: 150,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                border:
-                                    Border.all(color: primaryColor, width: 2),
+                                border: Border.all(
+                                    color: primaryColor, width: 2),
                                 image: request.patientImage != null
                                     ? DecorationImage(
-                                        image:
-                                            NetworkImage(request.patientImage!),
+                                        image: NetworkImage(
+                                            request.patientImage!),
                                         fit: BoxFit.cover)
                                     : null),
                             child: request.patientImage != null
@@ -450,7 +450,7 @@ class ViewRequest extends ConsumerWidget {
                               width: 10,
                             ),
                             Text(
-                              request.status!,
+                              request.status ?? "",
                               style: GoogleFonts.poppins(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
@@ -471,7 +471,8 @@ class ViewRequest extends ConsumerWidget {
                                     onConfirmText: 'Completed',
                                     onConfirm: () {
                                       ref
-                                          .read(singleRequestProvider.notifier)
+                                          .read(singleRequestProvider
+                                              .notifier)
                                           .markComplete(
                                               'Completed', request.id!);
                                     },
@@ -502,7 +503,8 @@ class ViewRequest extends ConsumerWidget {
                                     onConfirmText: 'Publish',
                                     onConfirm: () {
                                       ref
-                                          .read(singleRequestProvider.notifier)
+                                          .read(singleRequestProvider
+                                              .notifier)
                                           .changeStatus(
                                               'Published', request.id!);
                                     },
@@ -533,7 +535,8 @@ class ViewRequest extends ConsumerWidget {
                                     onConfirmText: 'Reject',
                                     onConfirm: () {
                                       ref
-                                          .read(singleRequestProvider.notifier)
+                                          .read(singleRequestProvider
+                                              .notifier)
                                           .changeStatus(
                                               'Rejected', request.id!);
                                     },

@@ -1,5 +1,5 @@
-import 'package:blood_donor_admin/styles/styles.dart';
 import 'package:flutter/material.dart';
+import '../../../../styles/styles.dart';
 
 
 class DashboardItem extends StatefulWidget {

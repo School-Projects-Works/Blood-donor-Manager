@@ -1,10 +1,11 @@
 
-import 'package:blood_donor_admin/core/components/widgets/smart_dialog.dart';
-import 'package:blood_donor_admin/models/donation_model.dart';
-import 'package:blood_donor_admin/models/request_model.dart';
-import 'package:blood_donor_admin/models/user_model.dart';
-import 'package:blood_donor_admin/services/firebase_fireStore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../Models/donation_model.dart';
+import '../../Models/request_model.dart';
+import '../../Models/user_model.dart';
+import '../../core/components/widgets/smart_dialog.dart';
+import '../services/firebase_fireStore.dart';
 
 final donationsStreamProvider= StreamProvider.autoDispose<List<DonationModel>>((ref)async* {
   final donations= FireStoreServices.getAllDonationsStream();

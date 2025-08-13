@@ -7,19 +7,24 @@ import 'package:blood_donor_manger/state/data_flow.dart';
 import 'package:blood_donor_manger/styles/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:url_strategy/url_strategy.dart';
+import 'admin/config/routes/routes.dart';
 import 'models/user_model.dart';
 import 'core/components/widgets/smart_dialog.dart';
 import 'firebase_options.dart'; 
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  if (kIsWeb) {
+     setPathUrlStrategy();
+  }
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -31,6 +36,7 @@ class MyApp extends ConsumerStatefulWidget {
 }
 
 class _MyAppState extends ConsumerState<MyApp> {
+    final _appRouter = AppRouter();
   Future<bool> _initUser() async {
     //await FirebaseAuthService.signOut();
     if (FirebaseAuthService.isUserLogin()) {
@@ -52,7 +58,24 @@ class _MyAppState extends ConsumerState<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    if(kIsWeb){
+      return MaterialApp.router(
+        routeInformationParser: _appRouter.defaultRouteParser(),
+        routerDelegate: _appRouter.delegate(),
+        routeInformationProvider: PlatformRouteInformationProvider(
+          initialRouteInformation: const RouteInformation(location: '/login'),
+        ),
+        title: 'Blood Donor Admin',
+        theme: ThemeData(
+          primaryColor: primarySwatch,
+          colorScheme: ColorScheme.fromSeed(seedColor: primaryColor),
+          useMaterial3: true,
+        ),
+        builder: FlutterSmartDialog.init(),
+        debugShowCheckedModeBanner: false,
+      );
+    }else {
+      return MaterialApp(
         title: 'Blood Bridge',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -78,5 +101,6 @@ class _MyAppState extends ConsumerState<MyApp> {
                 );
               }
             }));
+    }
   }
 }
